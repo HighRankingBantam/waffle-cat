@@ -1,4 +1,4 @@
-# Generated from colors.toml. Do not edit by hand.
+# Generated from palette/waffle-cat.yaml. Do not edit by hand.
 [colors.primary]
 background = "#292025"
 foreground = "#f7dd9b"
@@ -10,18 +10,18 @@ green = "#a4a900"
 yellow = "#caaf00"
 blue = "#fece6e"
 magenta = "#c5a0b6"
-cyan = "#e88f37"
-white = "#efb159"
-
-[colors.bright]
-black = "#834f36"
-red = "#ff8c68"
-green = "#f6ff40"
-yellow = "#ffe36e"
-blue = "#ffbe55"
-magenta = "#e5d0dc"
 cyan = "#cfe6ee"
 white = "#f7dd9b"
+
+[colors.bright]
+black = "#c5a0b6"
+red = "#d66556"
+green = "#a4a900"
+yellow = "#caaf00"
+blue = "#fece6e"
+magenta = "#c5a0b6"
+cyan = "#cfe6ee"
+white = "#e5d0dc"
 
 [colors.cursor]
 text = "#834f36"

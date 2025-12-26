@@ -2,7 +2,7 @@
 set -euo pipefail
 
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source_file="$root_dir/colors.toml"
+source_file="$root_dir/palette/waffle-cat.yaml"
 out_file="$root_dir/exports/kitty.conf"
 
 SOURCE_FILE="$source_file" OUT_FILE="$out_file" python - <<'PY'
@@ -10,35 +10,53 @@ from __future__ import annotations
 
 from pathlib import Path
 import os
-import tomllib
 
 source_file = Path(os.environ["SOURCE_FILE"])
 out_file = Path(os.environ["OUT_FILE"])
 
-data = tomllib.loads(source_file.read_text(encoding="utf-8"))
-colors = data.get("colors", {})
-primary = colors.get("primary", {})
-normal = colors.get("normal", {})
-bright = colors.get("bright", {})
-cursor = colors.get("cursor", {})
+def load_base16(path: Path) -> dict[str, str]:
+    data: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip()
+        value = value.strip().strip("\"").strip("'")
+        data[key] = value
+    return data
+
+base = load_base16(source_file)
+required = [f"base{index:02X}" for index in range(16)]
+missing = [key for key in required if key not in base]
+if missing:
+    raise SystemExit(f"Missing Base16 keys: {', '.join(missing)}")
+
+def hex_color(value: str) -> str:
+    return value if value.startswith("#") else f"#{value}"
+
+bg = hex_color(base["base00"])
+fg = hex_color(base["base05"])
+cursor = hex_color(base["base0D"])
+cursor_text = hex_color(base["base01"])
 
 palette_order = [
-    normal.get("black"),
-    normal.get("red"),
-    normal.get("green"),
-    normal.get("yellow"),
-    normal.get("blue"),
-    normal.get("magenta"),
-    normal.get("cyan"),
-    normal.get("white"),
-    bright.get("black"),
-    bright.get("red"),
-    bright.get("green"),
-    bright.get("yellow"),
-    bright.get("blue"),
-    bright.get("magenta"),
-    bright.get("cyan"),
-    bright.get("white"),
+    hex_color(base["base00"]),
+    hex_color(base["base08"]),
+    hex_color(base["base0B"]),
+    hex_color(base["base0A"]),
+    hex_color(base["base0D"]),
+    hex_color(base["base0E"]),
+    hex_color(base["base0C"]),
+    hex_color(base["base05"]),
+    hex_color(base["base03"]),
+    hex_color(base["base08"]),
+    hex_color(base["base0B"]),
+    hex_color(base["base0A"]),
+    hex_color(base["base0D"]),
+    hex_color(base["base0E"]),
+    hex_color(base["base0C"]),
+    hex_color(base["base07"]),
 ]
 
 missing = [i for i, value in enumerate(palette_order) if not value]
@@ -46,13 +64,11 @@ if missing:
     raise SystemExit(f"Missing palette entries at indexes: {missing}")
 
 lines = []
-lines.append("# Generated from colors.toml. Do not edit by hand.")
-lines.append(f"background {primary.get('background')}")
-lines.append(f"foreground {primary.get('foreground')}")
-if cursor.get("cursor"):
-    lines.append(f"cursor {cursor.get('cursor')}")
-if cursor.get("text"):
-    lines.append(f"cursor_text_color {cursor.get('text')}")
+lines.append("# Generated from palette/waffle-cat.yaml. Do not edit by hand.")
+lines.append(f"background {bg}")
+lines.append(f"foreground {fg}")
+lines.append(f"cursor {cursor}")
+lines.append(f"cursor_text_color {cursor_text}")
 for index, value in enumerate(palette_order):
     lines.append(f"color{index} {value}")
 

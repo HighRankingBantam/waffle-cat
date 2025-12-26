@@ -2,17 +2,16 @@
 
 ## Project Structure & Module Organization
 - `palette/waffle-cat.yaml` is the canonical Base16 palette definition.
-- `colors.toml` is a reference palette (Alacritty-style TOML) used for comparison during early work.
 - `exports/` will hold generated theme files; do not edit generated files directly.
 - `scripts/` is reserved for generation or validation tooling.
 - `screenshots/` stores visual QA captures.
 - `DEVPLAN.md` documents the roadmap, target exports, and QA checklist.
 
 ## Build, Test, and Development Commands
-- `./scripts/generate-alacritty.sh` writes `exports/alacritty.toml` from `colors.toml`.
-- `./scripts/generate-kitty.sh` writes `exports/kitty.conf` from `colors.toml`.
-- `./scripts/generate-ghostty.sh` writes `exports/ghostty.conf` from `colors.toml`.
-- Use manual validation: open `colors.toml` in a TOML-aware editor and visually review the palette in a terminal/editor you control.
+- `./scripts/generate-alacritty.sh` writes `exports/alacritty.toml` from `palette/waffle-cat.yaml`.
+- `./scripts/generate-kitty.sh` writes `exports/kitty.conf` from `palette/waffle-cat.yaml`.
+- `./scripts/generate-ghostty.sh` writes `exports/ghostty.conf` from `palette/waffle-cat.yaml`.
+- Use manual validation: open `palette/waffle-cat.yaml` and visually review the palette in a terminal/editor you control.
 
 ## Coding Style & Naming Conventions
 - Use 2-space indentation in TOML files and keep keys lowercase (example: `colors.primary`).
