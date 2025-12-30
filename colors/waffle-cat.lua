@@ -59,12 +59,9 @@ local statusline_group = vim.api.nvim_create_augroup("WaffleCatStatusline", { cl
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = statusline_group,
 	pattern = "waffle-cat",
-	callback = apply_statusline_highlights,
-})
-vim.api.nvim_create_autocmd("User", {
-	group = statusline_group,
-	pattern = "LualineColorscheme",
-	callback = apply_statusline_highlights,
+	callback = function()
+		vim.schedule(apply_statusline_highlights)
+	end,
 })
 
 hi("Normal", { fg = colors.base06, bg = colors.base01 })
