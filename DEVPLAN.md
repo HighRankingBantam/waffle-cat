@@ -3,7 +3,7 @@
 ## Overview
 **Waffle Cat** is a warm, cozy, high-contrast color scheme inspired by golden waffles, soft browns, honeyed yellows, and the gentle warmth of a sleepy cat in morning sunlight. The goal of this project is to provide a *portable, canonical color definition* that can be reliably exported to modern terminals, editors, and UI environments.
 
-This repository will treat a **single palette definition** as the source of truth, with generated artifacts for downstream applications.
+This repository will treat a **single palette definition** as the source of truth, with finalized configs committed and optional generated artifacts.
 
 ---
 
@@ -74,14 +74,16 @@ This file will be hand-curated and reviewed visually in multiple editors before 
 waffle-cat/
 ├── palette/
 │   └── waffle-cat.yaml        # Base16 source of truth
-├── exports/
+├── configs/
 │   ├── alacritty.toml
 │   ├── kitty.conf
-│   ├── wezterm.lua
-│   ├── foot.ini
 │   └── ghostty.conf
+├── exports/
+│   ├── alacritty.toml         # Generated output
+│   ├── kitty.conf             # Generated output
+│   └── ghostty.conf           # Generated output
 ├── scripts/
-│   └── generate.sh            # Optional automation
+│   └── generate.sh            # Optional helpers
 ├── screenshots/
 │   ├── terminal.png
 │   └── editor.png
@@ -121,11 +123,9 @@ waffle-cat/
 - Visual verification in:
   - Neovim (Lua tree-sitter)
   - Rust, Lua, Bash, Markdown
-- Export generation via:
-  - base16-builder
-  - or custom scripts if needed
+- Optional export generation via helper scripts
 
-Generated files **must not** be edited directly.
+Finalized configs live in `configs/` and may be edited directly. Generated files in `exports/` **must not** be edited directly.
 
 ---
 

@@ -36,33 +36,28 @@ def hex_color(value: str) -> str:
     return value if value.startswith("#") else f"#{value}"
 
 bg = hex_color(base["base00"])
-fg = hex_color(base["base05"])
-cursor = hex_color(base["base0D"])
-cursor_text = hex_color(base["base01"])
+fg = hex_color(base["base06"])
+cursor = hex_color(base["base06"])
+cursor_text = hex_color(base["base08"])
 
-ansi_keys = [f"ansi{index:02X}" for index in range(16)]
-ansi_present = all(key in base for key in ansi_keys)
-if ansi_present:
-    palette_order = [hex_color(base[key]) for key in ansi_keys]
-else:
-    palette_order = [
-        hex_color(base["base00"]),
-        hex_color(base["base08"]),
-        hex_color(base["base0B"]),
-        hex_color(base["base0A"]),
-        hex_color(base["base0D"]),
-        hex_color(base["base0E"]),
-        hex_color(base["base0C"]),
-        hex_color(base["base05"]),
-        hex_color(base["base03"]),
-        hex_color(base["base08"]),
-        hex_color(base["base0B"]),
-        hex_color(base["base0A"]),
-        hex_color(base["base0D"]),
-        hex_color(base["base0E"]),
-        hex_color(base["base0C"]),
-        hex_color(base["base07"]),
-    ]
+palette_order = [
+    hex_color(base["base00"]),
+    hex_color(base["base08"]),
+    hex_color(base["base09"]),
+    hex_color(base["base0A"]),
+    hex_color(base["base0B"]),
+    hex_color(base["base0C"]),
+    hex_color(base["base0D"]),
+    hex_color(base["base0E"]),
+    hex_color(base["base08"]),
+    hex_color(base["base09"]),
+    hex_color(base["base0A"]),
+    hex_color(base["base0B"]),
+    hex_color(base["base0C"]),
+    hex_color(base["base0D"]),
+    hex_color(base["base0E"]),
+    hex_color(base["base0F"]),
+]
 
 missing = [i for i, value in enumerate(palette_order) if not value]
 if missing:

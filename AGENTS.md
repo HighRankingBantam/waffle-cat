@@ -2,8 +2,9 @@
 
 ## Project Structure & Module Organization
 - `palette/waffle-cat.yaml` is the canonical Base16 palette definition.
-- `exports/` will hold generated theme files; do not edit generated files directly.
-- `scripts/` is reserved for generation or validation tooling.
+- `configs/` holds finalized theme configs ready for users to install.
+- `exports/` holds generated outputs from helper scripts.
+- `scripts/` is reserved for generation or validation tooling; scripts are optional helpers.
 - `screenshots/` stores visual QA captures.
 - `DEVPLAN.md` documents the roadmap, target exports, and QA checklist.
 
@@ -11,7 +12,8 @@
 - `./scripts/generate-alacritty.sh` writes `exports/alacritty.toml` from `palette/waffle-cat.yaml`.
 - `./scripts/generate-kitty.sh` writes `exports/kitty.conf` from `palette/waffle-cat.yaml`.
 - `./scripts/generate-ghostty.sh` writes `exports/ghostty.conf` from `palette/waffle-cat.yaml`.
-- Use manual validation: open `palette/waffle-cat.yaml` and visually review the palette in a terminal/editor you control.
+- Scripts are optional helpers; finalized configs live in `configs/`.
+- Use manual validation: open `palette/waffle-cat.yaml` and the relevant file in `configs/`, then visually review the palette in a terminal/editor you control.
 
 ## Coding Style & Naming Conventions
 - Use 2-space indentation in TOML files and keep keys lowercase (example: `colors.primary`).
