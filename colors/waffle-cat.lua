@@ -12,7 +12,7 @@ local colors = {
 	base0a = "#f6ff40", -- types/labels/search
 	base0b = "#a4a900", -- strings/additions
 	base0c = "#ffbe55", -- specials/hints/insert
-	base0d = "#e88f37", -- functions/info/visual
+	base0d = "#a4a900", -- functions/info/visual
 	base0e = "#e88f37", -- keywords/statements
 	base0f = "#e5d0dc", -- extra accent (unused)
 }
