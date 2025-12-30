@@ -56,12 +56,20 @@ local function apply_statusline_highlights()
 end
 
 local statusline_group = vim.api.nvim_create_augroup("WaffleCatStatusline", { clear = true })
+local function apply_statusline_overrides()
+	vim.defer_fn(function()
+		apply_statusline_highlights()
+	end, 20)
+end
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = statusline_group,
 	pattern = "waffle-cat",
-	callback = function()
-		vim.schedule(apply_statusline_highlights)
-	end,
+	callback = apply_statusline_overrides,
+})
+vim.api.nvim_create_autocmd("User", {
+	group = statusline_group,
+	pattern = "VeryLazy",
+	callback = apply_statusline_overrides,
 })
 
 hi("Normal", { fg = colors.base06, bg = colors.base01 })
