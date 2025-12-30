@@ -26,7 +26,9 @@ local function hi(group, opts)
   vim.api.nvim_set_hl(0, group, opts)
 end
 
-hi("Normal", { fg = colors.base05, bg = colors.base00 })
+hi("Normal", { fg = colors.base06, bg = colors.base01 })
+hi("Command", { fg = colors.base00, bg = colors.base0d })
+hi("Insert", { fg = colors.base00, bg = colors.base0c })
 hi("NormalFloat", { fg = colors.base05, bg = colors.base01 })
 hi("FloatBorder", { fg = colors.base03, bg = colors.base01 })
 hi("Cursor", { fg = colors.base00, bg = colors.base05 })
