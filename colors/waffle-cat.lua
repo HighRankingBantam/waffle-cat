@@ -1,20 +1,20 @@
 local colors = {
-  base00 = "#292025",
-  base01 = "#3a2d32",
-  base02 = "#4a3a40",
-  base03 = "#7a6a60",
-  base04 = "#b6a78f",
-  base05 = "#efb159",
-  base06 = "#f7dd9b",
-  base07 = "#fff3cf",
-  base08 = "#834f36",
-  base09 = "#ff8c68",
-  base0a = "#f6ff40",
-  base0b = "#a4a900",
-  base0c = "#ffbe55",
-  base0d = "#c5a0b6",
-  base0e = "#e5d0dc",
-  base0f = "#e88f37",
+	base00 = "#292025", -- darker bg, gutters/mode text
+	base01 = "#3a2d32", -- main bg (Normal/StatusLine)
+	base02 = "#4a3a40", -- selection/visual bg
+	base03 = "#7a6a60", -- comments/subtle borders
+	base04 = "#b6a78f", -- dim fg (tabs/statusline)
+	base05 = "#efb159", -- fg accent (operators/menus)
+	base06 = "#f7dd9b", -- main fg (Normal)
+	base07 = "#fff3cf", -- bright fg (unused)
+	base08 = "#834f36", -- errors/identifiers
+	base09 = "#ff8c68", -- numbers/command/search
+	base0a = "#f6ff40", -- types/labels/search
+	base0b = "#a4a900", -- strings/additions
+	base0c = "#ffbe55", -- specials/hints/insert
+	base0d = "#c5a0b6", -- functions/info/visual
+	base0e = "#e88f37", -- keywords/statements
+	base0f = "#e5d0dc", -- extra accent (unused)
 }
 
 vim.cmd("highlight clear")
@@ -23,48 +23,48 @@ vim.o.background = "dark"
 vim.o.termguicolors = true
 
 local function hi(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
+	vim.api.nvim_set_hl(0, group, opts)
 end
 
 local function apply_statusline_highlights()
-  hi("StatusLine", { fg = colors.base06, bg = colors.base01 })
-  hi("StatusLineNC", { fg = colors.base04, bg = colors.base01 })
-  hi("ModeMsg", { fg = colors.base00, bg = colors.base05, bold = true })
-  hi("MsgArea", { fg = colors.base06, bg = colors.base01 })
-  hi("MsgSeparator", { fg = colors.base02, bg = colors.base01 })
-  hi("lualine_a_normal", { fg = colors.base00, bg = colors.base05, bold = true })
-  hi("lualine_a_insert", { fg = colors.base00, bg = colors.base0c, bold = true })
-  hi("lualine_a_command", { fg = colors.base00, bg = colors.base09, bold = true })
-  hi("lualine_a_visual", { fg = colors.base00, bg = colors.base0d, bold = true })
-  hi("lualine_a_replace", { fg = colors.base00, bg = colors.base08, bold = true })
-  hi("lualine_b_normal", { fg = colors.base06, bg = colors.base02 })
-  hi("lualine_b_insert", { fg = colors.base06, bg = colors.base02 })
-  hi("lualine_b_command", { fg = colors.base06, bg = colors.base02 })
-  hi("lualine_b_visual", { fg = colors.base06, bg = colors.base02 })
-  hi("lualine_b_replace", { fg = colors.base06, bg = colors.base02 })
-  hi("lualine_c_normal", { fg = colors.base04, bg = colors.base01 })
-  hi("lualine_c_insert", { fg = colors.base04, bg = colors.base01 })
-  hi("lualine_c_command", { fg = colors.base04, bg = colors.base01 })
-  hi("lualine_c_visual", { fg = colors.base04, bg = colors.base01 })
-  hi("lualine_c_replace", { fg = colors.base04, bg = colors.base01 })
-  hi("MiniStatuslineModeNormal", { fg = colors.base00, bg = colors.base05, bold = true })
-  hi("MiniStatuslineModeInsert", { fg = colors.base00, bg = colors.base0c, bold = true })
-  hi("MiniStatuslineModeCommand", { fg = colors.base00, bg = colors.base09, bold = true })
-  hi("MiniStatuslineModeVisual", { fg = colors.base00, bg = colors.base0d, bold = true })
-  hi("MiniStatuslineModeReplace", { fg = colors.base00, bg = colors.base08, bold = true })
-  hi("MiniStatuslineInactive", { fg = colors.base04, bg = colors.base01 })
+	hi("StatusLine", { fg = colors.base06, bg = colors.base01 })
+	hi("StatusLineNC", { fg = colors.base04, bg = colors.base01 })
+	hi("ModeMsg", { fg = colors.base00, bg = colors.base05, bold = true })
+	hi("MsgArea", { fg = colors.base06, bg = colors.base01 })
+	hi("MsgSeparator", { fg = colors.base02, bg = colors.base01 })
+	hi("lualine_a_normal", { fg = colors.base00, bg = colors.base05, bold = true })
+	hi("lualine_a_insert", { fg = colors.base00, bg = colors.base0c, bold = true })
+	hi("lualine_a_command", { fg = colors.base00, bg = colors.base09, bold = true })
+	hi("lualine_a_visual", { fg = colors.base00, bg = colors.base0d, bold = true })
+	hi("lualine_a_replace", { fg = colors.base00, bg = colors.base08, bold = true })
+	hi("lualine_b_normal", { fg = colors.base06, bg = colors.base02 })
+	hi("lualine_b_insert", { fg = colors.base06, bg = colors.base02 })
+	hi("lualine_b_command", { fg = colors.base06, bg = colors.base02 })
+	hi("lualine_b_visual", { fg = colors.base06, bg = colors.base02 })
+	hi("lualine_b_replace", { fg = colors.base06, bg = colors.base02 })
+	hi("lualine_c_normal", { fg = colors.base04, bg = colors.base01 })
+	hi("lualine_c_insert", { fg = colors.base04, bg = colors.base01 })
+	hi("lualine_c_command", { fg = colors.base04, bg = colors.base01 })
+	hi("lualine_c_visual", { fg = colors.base04, bg = colors.base01 })
+	hi("lualine_c_replace", { fg = colors.base04, bg = colors.base01 })
+	hi("MiniStatuslineModeNormal", { fg = colors.base00, bg = colors.base05, bold = true })
+	hi("MiniStatuslineModeInsert", { fg = colors.base00, bg = colors.base0c, bold = true })
+	hi("MiniStatuslineModeCommand", { fg = colors.base00, bg = colors.base09, bold = true })
+	hi("MiniStatuslineModeVisual", { fg = colors.base00, bg = colors.base0d, bold = true })
+	hi("MiniStatuslineModeReplace", { fg = colors.base00, bg = colors.base08, bold = true })
+	hi("MiniStatuslineInactive", { fg = colors.base04, bg = colors.base01 })
 end
 
 local statusline_group = vim.api.nvim_create_augroup("WaffleCatStatusline", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
-  group = statusline_group,
-  pattern = "waffle-cat",
-  callback = apply_statusline_highlights,
+	group = statusline_group,
+	pattern = "waffle-cat",
+	callback = apply_statusline_highlights,
 })
 vim.api.nvim_create_autocmd("User", {
-  group = statusline_group,
-  pattern = "LualineColorscheme",
-  callback = apply_statusline_highlights,
+	group = statusline_group,
+	pattern = "LualineColorscheme",
+	callback = apply_statusline_highlights,
 })
 
 hi("Normal", { fg = colors.base06, bg = colors.base01 })
