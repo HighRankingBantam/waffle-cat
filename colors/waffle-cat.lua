@@ -12,8 +12,8 @@ local colors = {
 	base0a = "#f6ff40", -- types/labels/search
 	base0b = "#a4a900", -- strings/additions
 	base0c = "#ffbe55", -- specials/hints/insert
-	base0d = "#c5a0b6", -- functions/info/visual
-	base0e = "#e5d0dc", -- keywords/statements
+	base0d = "#e5d0dc", -- functions/info/visual
+	base0e = "#c5a0b6", -- keywords/statements
 	base0f = "#e88f37", -- extra accent (unused)
 }
 
