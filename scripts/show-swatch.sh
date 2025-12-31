@@ -3,21 +3,18 @@ set -euo pipefail
 
 script_path="$(readlink -f "${BASH_SOURCE[0]}")"
 root_dir="$(cd "$(dirname "$script_path")/.." && pwd)"
-base16_file="$root_dir/palette/waffle-cat.yaml"
-base24_file="$root_dir/palette/waffle-cat-base24.yaml"
+palette_dir="$root_dir/palette"
 
-BASE16_FILE="$base16_file" BASE24_FILE="$base24_file" python - <<'PY'
+PALETTE_DIR="$palette_dir" python - <<'PY'
 from __future__ import annotations
 
 from pathlib import Path
 import os
 import shutil
 
-base16_file = Path(os.environ["BASE16_FILE"])
-base24_file = Path(os.environ["BASE24_FILE"])
-
-if not base16_file.exists():
-    raise SystemExit(f"Palette not found: {base16_file}")
+palette_dir = Path(os.environ["PALETTE_DIR"])
+if not palette_dir.exists():
+    raise SystemExit(f"Palette directory not found: {palette_dir}")
 
 def load_palette(path: Path) -> dict[str, str]:
     data: dict[str, str] = {}
@@ -27,8 +24,17 @@ def load_palette(path: Path) -> dict[str, str]:
             continue
         key, value = line.split(":", 1)
         key = key.strip()
-        value = value.strip().strip("\"").strip("'")
-        data[key] = value
+        raw_value = value.strip()
+        if raw_value.startswith(("\"", "'")):
+            quote = raw_value[0]
+            end_index = raw_value.find(quote, 1)
+            if end_index != -1:
+                cleaned = raw_value[1:end_index]
+            else:
+                cleaned = raw_value.strip(quote)
+        else:
+            cleaned = raw_value.split("#", 1)[0].strip()
+        data[key] = cleaned
     return data
 
 def hex_to_rgb(value: str) -> tuple[int, int, int]:
@@ -42,7 +48,7 @@ def fg_for_bg(r: int, g: int, b: int) -> str:
     luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
     return "0;0;0" if luminance > 0.6 else "255;255;255"
 
-def color_cell(text: str, hex_value: str, width: int = 10) -> str:
+def color_cell(text: str, hex_value: str, width: int = 12) -> str:
     r, g, b = hex_to_rgb(hex_value)
     fg = fg_for_bg(r, g, b)
     bg = f"\x1b[48;2;{r};{g};{b}m"
@@ -58,45 +64,75 @@ def max_columns(cell_width: int, max_cols: int = 8, min_cols: int = 4) -> int:
 
 def render_grid(keys: list[str], palette: dict[str, str], title: str, columns: int | None = None) -> None:
     if columns is None:
-        columns = max_columns(10)
+        columns = max_columns(12)
     print(title)
     row_labels: list[str] = []
     row_values: list[str] = []
+    row_names: list[str] = []
     for index, key in enumerate(keys, start=1):
         value = palette[key]
         row_labels.append(color_cell(key, value))
         row_values.append(color_cell(value, value))
+        if key in BASE16_ROLE_NAMES:
+            row_names.append(color_cell(BASE16_ROLE_NAMES[key], value))
         if index % columns == 0:
             print(" ".join(row_labels))
             print(" ".join(row_values))
+            if row_names:
+                print(" ".join(row_names))
             print("")
             row_labels = []
             row_values = []
+            row_names = []
     if row_labels:
         print(" ".join(row_labels))
         print(" ".join(row_values))
+        if row_names:
+            print(" ".join(row_names))
         print("")
 
-base16 = load_palette(base16_file)
+palette_files = sorted(palette_dir.glob("*.yaml"))
+if not palette_files:
+    raise SystemExit(f"No palette YAML files found in {palette_dir}")
+
+BASE16_ROLE_NAMES = {
+    "base00": "background",
+    "base01": "bg-alt",
+    "base02": "selection",
+    "base03": "comments",
+    "base04": "fg-alt",
+    "base05": "foreground",
+    "base06": "fg-light",
+    "base07": "bg-light",
+    "base08": "red",
+    "base09": "orange",
+    "base0A": "yellow",
+    "base0B": "green",
+    "base0C": "cyan",
+    "base0D": "blue",
+    "base0E": "magenta",
+    "base0F": "brown",
+}
+
 base16_keys = [f"base{index:02X}" for index in range(16)]
-missing = [key for key in base16_keys if key not in base16]
-if missing:
-    raise SystemExit(f"Missing Base16 keys in {base16_file}: {', '.join(missing)}")
+base24_keys = [f"base{index:02X}" for index in range(16, 24)]
 
-print(f"palette: {base16_file}")
-print("")
-render_grid(base16_keys, base16, "base16:")
-
-if base24_file.exists():
-    base24 = load_palette(base24_file)
-    base24_keys = [f"base{index:02X}" for index in range(16, 24)]
-    if all(key in base24 for key in base24_keys):
-        render_grid(base24_keys, base24, "base24 (extras):")
-    else:
-        print(f"base24 extras: (missing in {base24_file})")
-        print("")
-else:
-    print("base24 extras: (not present)")
+for palette_file in palette_files:
+    palette = load_palette(palette_file)
+    print(f"palette: {palette_file}")
     print("")
+    missing = [key for key in base16_keys if key not in palette]
+    if missing:
+        print(f"base16: (missing keys: {', '.join(missing)})")
+        print("")
+        continue
+
+    render_grid(base16_keys, palette, "base16:")
+
+    if all(key in palette for key in base24_keys):
+        render_grid(base24_keys, palette, "base24 (extras):")
+    else:
+        print("base24 (extras): (not present)")
+        print("")
 
 PY

@@ -2,19 +2,20 @@ local colors = {
 	base00 = "#292025", -- darker bg, gutters/mode text
 	base01 = "#3a2d32", -- main bg (Normal/StatusLine)
 	base02 = "#4a3a40", -- selection/visual bg
-	base03 = "#7a6a60", -- comments/subtle borders
-	base04 = "#b6a78f", -- dim fg (tabs/statusline)
-	base05 = "#efb159", -- fg accent (operators/menus)
+	base03 = "#b6a78f", -- comments/subtle borders
+	base04 = "#efb159", -- dim fg (tabs/statusline)
+	base05 = "#f3c77a", -- fg accent (operators/menus)
 	base06 = "#f7dd9b", -- main fg (Normal)
 	base07 = "#fff3cf", -- bright fg
 	base08 = "#834f36", -- errors/identifiers
 	base09 = "#ff8c68", -- numbers/command/search
 	base0a = "#f0e65a", -- types/labels/search
 	base0b = "#a4a900", -- strings/additions
-	base0c = "#ffbe55", -- specials/hints/insert
-	base0d = "#c7f3ff", -- functions/info/visual
+	base0c = "#c7f3ff", -- specials/hints/insert
+	base0d = "#ffbe55", -- functions/info/visual
 	base0e = "#c5a0b6", -- keywords/statements
-	base0f = "#e88f37", -- extra accent (unused)
+	base0f = "#f0e65a", -- extra accent (unused)
+	base10 = "#e88f37", -- extra accent (unused)
 }
 
 vim.cmd("highlight clear")
