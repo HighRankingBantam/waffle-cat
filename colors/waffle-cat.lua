@@ -9,10 +9,10 @@ local colors = {
 	base07 = "#fff3cf", -- bright fg
 	base08 = "#834f36", -- errors/identifiers
 	base09 = "#ff8c68", -- numbers/command/search
-	base0a = "#f6ff40", -- types/labels/search
+	base0a = "#f0e65a", -- types/labels/search
 	base0b = "#a4a900", -- strings/additions
 	base0c = "#ffbe55", -- specials/hints/insert
-	base0d = "#e5d0dc", -- functions/info/visual
+	base0d = "#c7f3ff", -- functions/info/visual
 	base0e = "#c5a0b6", -- keywords/statements
 	base0f = "#e88f37", -- extra accent (unused)
 }
