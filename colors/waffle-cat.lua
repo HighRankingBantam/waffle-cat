@@ -12,9 +12,9 @@ local colors = {
 	base0a = "#f6ff40", -- types/labels/search
 	base0b = "#a4a900", -- strings/additions
 	base0c = "#ffbe55", -- specials/hints/insert
-	base0d = "#a4a900", -- functions/info/visual
-	base0e = "#e88f37", -- keywords/statements
-	base0f = "#e5d0dc", -- extra accent (unused)
+	base0d = "#c5a0b6", -- functions/info/visual
+	base0e = "#e5d0dc", -- keywords/statements
+	base0f = "#e88f37", -- extra accent (unused)
 }
 
 vim.cmd("highlight clear")
