@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+script_path="$(readlink -f "${BASH_SOURCE[0]}")"
+root_dir="$(cd "$(dirname "$script_path")/.." && pwd)"
 base16_file="$root_dir/palette/waffle-cat.yaml"
 base24_file="$root_dir/palette/waffle-cat-base24.yaml"
 
