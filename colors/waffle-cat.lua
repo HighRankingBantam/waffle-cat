@@ -6,7 +6,7 @@ local colors = {
 	base04 = "#b6a78f", -- dim fg (tabs/statusline)
 	base05 = "#efb159", -- fg accent (operators/menus)
 	base06 = "#f7dd9b", -- main fg (Normal)
-	base07 = "#fff3cf", -- bright fg (unused)
+	base07 = "#fff3cf", -- bright fg
 	base08 = "#834f36", -- errors/identifiers
 	base09 = "#ff8c68", -- numbers/command/search
 	base0a = "#f6ff40", -- types/labels/search
@@ -26,72 +26,23 @@ local function hi(group, opts)
 	vim.api.nvim_set_hl(0, group, opts)
 end
 
-local function apply_statusline_highlights()
-	hi("StatusLine", { fg = colors.base06, bg = colors.base01 })
-	hi("StatusLineNC", { fg = colors.base04, bg = colors.base01 })
-	hi("ModeMsg", { fg = colors.base00, bg = colors.base05, bold = true })
-	hi("MsgArea", { fg = colors.base06, bg = colors.base01 })
-	hi("MsgSeparator", { fg = colors.base02, bg = colors.base01 })
-	hi("lualine_a_normal", { fg = colors.base00, bg = colors.base05, bold = true })
-	hi("lualine_a_insert", { fg = colors.base00, bg = colors.base0c, bold = true })
-	hi("lualine_a_command", { fg = colors.base00, bg = colors.base09, bold = true })
-	hi("lualine_a_visual", { fg = colors.base07, bg = colors.base0d, bold = true })
-	hi("lualine_a_replace", { fg = colors.base00, bg = colors.base08, bold = true })
-	hi("lualine_a_to_b_normal", { fg = colors.base05, bg = colors.base02 })
-	hi("lualine_a_to_b_insert", { fg = colors.base0d, bg = colors.base02 })
-	hi("lualine_a_to_b_command", { fg = colors.base09, bg = colors.base02 })
-	hi("lualine_a_to_b_visual", { fg = colors.base0c, bg = colors.base02 })
-	hi("lualine_a_to_b_replace", { fg = colors.base08, bg = colors.base02 })
-	hi("lualine_b_normal", { fg = colors.base05, bg = colors.base02 })
-	hi("lualine_b_insert", { fg = colors.base0c, bg = colors.base02 })
-	hi("lualine_b_command", { fg = colors.base09, bg = colors.base02 })
-	hi("lualine_b_visual", { fg = colors.base0d, bg = colors.base02 })
-	hi("lualine_b_replace", { fg = colors.base08, bg = colors.base02 })
-	hi("lualine_c_normal", { fg = colors.base04, bg = colors.base01 })
-	hi("lualine_c_insert", { fg = colors.base04, bg = colors.base01 })
-	hi("lualine_c_command", { fg = colors.base04, bg = colors.base01 })
-	hi("lualine_c_visual", { fg = colors.base04, bg = colors.base01 })
-	hi("lualine_c_replace", { fg = colors.base04, bg = colors.base01 })
-	hi("MiniStatuslineModeNormal", { fg = colors.base00, bg = colors.base05, bold = true })
-	hi("MiniStatuslineModeInsert", { fg = colors.base00, bg = colors.base0c, bold = true })
-	hi("MiniStatuslineModeCommand", { fg = colors.base00, bg = colors.base09, bold = true })
-	hi("MiniStatuslineModeVisual", { fg = colors.base00, bg = colors.base0d, bold = true })
-	hi("MiniStatuslineModeReplace", { fg = colors.base00, bg = colors.base08, bold = true })
-	hi("MiniStatuslineInactive", { fg = colors.base04, bg = colors.base01 })
-end
-
-local statusline_group = vim.api.nvim_create_augroup("WaffleCatStatusline", { clear = true })
-local function apply_statusline_overrides()
-	vim.defer_fn(function()
-		apply_statusline_highlights()
-	end, 20)
-end
-vim.api.nvim_create_autocmd("ColorScheme", {
-	group = statusline_group,
-	pattern = "waffle-cat",
-	callback = apply_statusline_overrides,
-})
-vim.api.nvim_create_autocmd("User", {
-	group = statusline_group,
-	pattern = "VeryLazy",
-	callback = apply_statusline_overrides,
-})
-
 hi("Normal", { fg = colors.base06, bg = colors.base01 })
-hi("Command", { fg = colors.base00, bg = colors.base09 })
-hi("Insert", { fg = colors.base00, bg = colors.base0c })
 hi("NormalFloat", { fg = colors.base05, bg = colors.base01 })
 hi("FloatBorder", { fg = colors.base03, bg = colors.base01 })
 hi("Cursor", { fg = colors.base00, bg = colors.base05 })
-hi("CursorLine", { bg = colors.base01 })
-hi("CursorColumn", { bg = colors.base01 })
+hi("CursorLine", { bg = colors.base02 })
+hi("CursorColumn", { bg = colors.base02 })
 hi("CursorLineNr", { fg = colors.base06, bg = colors.base01 })
 hi("LineNr", { fg = colors.base03, bg = colors.base00 })
 hi("SignColumn", { fg = colors.base04, bg = colors.base00 })
-hi("ColorColumn", { bg = colors.base01 })
+hi("ColorColumn", { bg = colors.base02 })
 hi("VertSplit", { fg = colors.base02 })
 hi("WinSeparator", { fg = colors.base02 })
-apply_statusline_highlights()
+hi("StatusLine", { fg = colors.base06, bg = colors.base01 })
+hi("StatusLineNC", { fg = colors.base04, bg = colors.base01 })
+hi("ModeMsg", { fg = colors.base0a, bold = true })
+hi("MsgArea", { fg = colors.base06, bg = colors.base01 })
+hi("MsgSeparator", { fg = colors.base02, bg = colors.base01 })
 hi("TabLine", { fg = colors.base04, bg = colors.base01 })
 hi("TabLineSel", { fg = colors.base06, bg = colors.base02 })
 hi("TabLineFill", { fg = colors.base03, bg = colors.base01 })
