@@ -69,26 +69,39 @@ def render_grid(keys: list[str], palette: dict[str, str], title: str, columns: i
     row_labels: list[str] = []
     row_values: list[str] = []
     row_names: list[str] = []
+    row_flags: list[str] = []
+    row_has_drop = False
     for index, key in enumerate(keys, start=1):
         value = palette[key]
         row_labels.append(color_cell(key, value))
         row_values.append(color_cell(value, value))
         if key in BASE16_ROLE_NAMES:
             row_names.append(color_cell(BASE16_ROLE_NAMES[key], value))
+        if key in DROPPED_BASE16_KEYS:
+            row_flags.append(color_cell("(drop)", value))
+            row_has_drop = True
+        else:
+            row_flags.append(color_cell("", value))
         if index % columns == 0:
             print(" ".join(row_labels))
             print(" ".join(row_values))
             if row_names:
                 print(" ".join(row_names))
+            if row_has_drop:
+                print(" ".join(row_flags))
             print("")
             row_labels = []
             row_values = []
             row_names = []
+            row_flags = []
+            row_has_drop = False
     if row_labels:
         print(" ".join(row_labels))
         print(" ".join(row_values))
         if row_names:
             print(" ".join(row_names))
+        if row_has_drop:
+            print(" ".join(row_flags))
         print("")
 
 palette_files = sorted(palette_dir.glob("*.yaml"))
@@ -116,6 +129,28 @@ BASE16_ROLE_NAMES = {
 
 base16_keys = [f"base{index:02X}" for index in range(16)]
 base24_keys = [f"base{index:02X}" for index in range(16, 24)]
+
+# Standard base16 -> ANSI 16-color mapping used by base16-shell style themes.
+BASE16_TO_ANSI = {
+    "color00": "base00",
+    "color01": "base08",
+    "color02": "base0B",
+    "color03": "base0A",
+    "color04": "base0D",
+    "color05": "base0E",
+    "color06": "base0C",
+    "color07": "base05",
+    "color08": "base03",
+    "color09": "base08",
+    "color10": "base0B",
+    "color11": "base0A",
+    "color12": "base0D",
+    "color13": "base0E",
+    "color14": "base0C",
+    "color15": "base07",
+}
+ANSI_USED_BASE16 = set(BASE16_TO_ANSI.values())
+DROPPED_BASE16_KEYS = {key for key in base16_keys if key not in ANSI_USED_BASE16}
 
 for palette_file in palette_files:
     palette = load_palette(palette_file)
