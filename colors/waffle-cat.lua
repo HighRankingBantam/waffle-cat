@@ -1,21 +1,21 @@
+-- Deliberate Base16 reduction of palette/waffle-cat-base24.yaml.
 local colors = {
-	base00 = "#292025", -- darker bg, gutters/mode text
-	base01 = "#3a2d32", -- main bg (Normal/StatusLine)
-	base02 = "#4a3a40", -- selection/visual bg
-	base03 = "#b6a78f", -- comments/subtle borders
-	base04 = "#efb159", -- dim fg (tabs/statusline)
-	base05 = "#f3c77a", -- fg accent (operators/menus)
-	base06 = "#f7dd9b", -- main fg (Normal)
-	base07 = "#fff3cf", -- bright fg
-	base08 = "#834f36", -- errors/identifiers
-	base09 = "#ff8c68", -- numbers/command/search
-	base0a = "#f0e65a", -- types/labels/search
-	base0b = "#a4a900", -- strings/additions
-	base0c = "#c7f3ff", -- specials/hints/insert
-	base0d = "#ffbe55", -- functions/info/visual
-	base0e = "#c5a0b6", -- keywords/statements
-	base0f = "#f0e65a", -- extra accent (unused)
-	base10 = "#e88f37", -- extra accent (unused)
+	base00 = "#292025", -- cocoa background
+	base01 = "#362d30", -- lighter background
+	base02 = "#6b5650", -- selection background
+	base03 = "#a58c82", -- comments and muted text
+	base04 = "#a58c82", -- dark foreground
+	base05 = "#fff4d8", -- default foreground
+	base06 = "#fff4d8", -- light foreground
+	base07 = "#fffaf0", -- bright foreground
+	base08 = "#cf7358", -- errors and deletions
+	base09 = "#c8964b", -- constants and warnings
+	base0a = "#c8964b", -- types and search
+	base0b = "#9fad68", -- strings and additions
+	base0c = "#9eb8b2", -- specials and hints
+	base0d = "#c87d2a", -- functions and information
+	base0e = "#c98c97", -- keywords and statements
+	base0f = "#644b26", -- embedded and deprecated syntax
 }
 
 vim.cmd("highlight clear")
@@ -27,32 +27,32 @@ local function hi(group, opts)
 	vim.api.nvim_set_hl(0, group, opts)
 end
 
-hi("Normal", { fg = colors.base06, bg = colors.base01 })
+hi("Normal", { fg = colors.base05, bg = colors.base00 })
 hi("NormalFloat", { fg = colors.base05, bg = colors.base01 })
 hi("FloatBorder", { fg = colors.base03, bg = colors.base01 })
-hi("Cursor", { fg = colors.base00, bg = colors.base05 })
-hi("CursorLine", { bg = colors.base02 })
-hi("CursorColumn", { bg = colors.base02 })
-hi("CursorLineNr", { fg = colors.base06, bg = colors.base01 })
+hi("Cursor", { fg = colors.base00, bg = colors.base07 })
+hi("CursorLine", { bg = colors.base01 })
+hi("CursorColumn", { bg = colors.base01 })
+hi("CursorLineNr", { fg = colors.base0d, bg = colors.base00, bold = true })
 hi("LineNr", { fg = colors.base03, bg = colors.base00 })
 hi("SignColumn", { fg = colors.base04, bg = colors.base00 })
-hi("ColorColumn", { bg = colors.base02 })
+hi("ColorColumn", { bg = colors.base01 })
 hi("VertSplit", { fg = colors.base02 })
 hi("WinSeparator", { fg = colors.base02 })
-hi("StatusLine", { fg = colors.base06, bg = colors.base01 })
-hi("StatusLineNC", { fg = colors.base04, bg = colors.base01 })
-hi("ModeMsg", { fg = colors.base0a, bold = true })
-hi("MsgArea", { fg = colors.base06, bg = colors.base01 })
+hi("StatusLine", { fg = colors.base00, bg = colors.base05 })
+hi("StatusLineNC", { fg = colors.base03, bg = colors.base01 })
+hi("ModeMsg", { fg = colors.base0d, bold = true })
+hi("MsgArea", { fg = colors.base05, bg = colors.base00 })
 hi("MsgSeparator", { fg = colors.base02, bg = colors.base01 })
-hi("TabLine", { fg = colors.base04, bg = colors.base01 })
-hi("TabLineSel", { fg = colors.base06, bg = colors.base02 })
+hi("TabLine", { fg = colors.base03, bg = colors.base01 })
+hi("TabLineSel", { fg = colors.base05, bg = colors.base02 })
 hi("TabLineFill", { fg = colors.base03, bg = colors.base01 })
 hi("Visual", { bg = colors.base02 })
 hi("Search", { fg = colors.base00, bg = colors.base0a })
 hi("IncSearch", { fg = colors.base00, bg = colors.base09 })
 hi("MatchParen", { fg = colors.base0a, bg = colors.base02 })
 hi("Pmenu", { fg = colors.base05, bg = colors.base01 })
-hi("PmenuSel", { fg = colors.base06, bg = colors.base02 })
+hi("PmenuSel", { fg = colors.base05, bg = colors.base02 })
 hi("PmenuSbar", { bg = colors.base01 })
 hi("PmenuThumb", { bg = colors.base03 })
 hi("Folded", { fg = colors.base04, bg = colors.base01 })
@@ -92,7 +92,7 @@ hi("Tag", { fg = colors.base0a })
 hi("Delimiter", { fg = colors.base05 })
 hi("SpecialComment", { fg = colors.base03, italic = true })
 hi("Underlined", { fg = colors.base0d, underline = true })
-hi("Todo", { fg = colors.base0a, bg = colors.base01, bold = true })
+hi("Todo", { fg = colors.base00, bg = colors.base0a, bold = true })
 hi("Error", { fg = colors.base08, bold = true })
 
 hi("DiagnosticError", { fg = colors.base08 })

@@ -1,19 +1,19 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `palette/waffle-cat.yaml` is the canonical Base16 palette definition.
-- `configs/` holds finalized theme configs ready for users to install.
-- `exports/` holds generated outputs from helper scripts.
-- `scripts/` is reserved for generation or validation tooling; scripts are optional helpers.
+- `palette/waffle-cat-base24.yaml` is the canonical portable palette definition.
+- `palette/waffle-cat-base16.yaml` is the deliberate Base16 reduction.
+- `configs/` holds generated app configs and intentionally maintained editor exports.
+- `scripts/` contains shared generation and validation tooling.
 - `screenshots/` stores visual QA captures.
 - `DEVPLAN.md` documents the roadmap, target exports, and QA checklist.
 
 ## Build, Test, and Development Commands
-- `./scripts/generate-alacritty.sh` writes `exports/alacritty.toml` from `palette/waffle-cat.yaml`.
-- `./scripts/generate-kitty.sh` writes `exports/kitty.conf` from `palette/waffle-cat.yaml`.
-- `./scripts/generate-ghostty.sh` writes `exports/ghostty.conf` from `palette/waffle-cat.yaml`.
-- Scripts are optional helpers; finalized configs live in `configs/`.
-- Use manual validation: open `palette/waffle-cat.yaml` and the relevant file in `configs/`, then visually review the palette in a terminal/editor you control.
+- `./scripts/generate-all.sh` regenerates every generated terminal and CLI config in `configs/` from the Base24 palette.
+- `./scripts/check-generated.sh` validates the palettes and fails if generated configs are stale.
+- `./scripts/validate-palettes.py --source /path/to/colors.toml` also verifies synchronization with the Omarchy source palette.
+- `./scripts/launch-terminal-qa.sh <terminal> [opacity]` opens the shared visual QA fixture with a generated terminal config.
+- Use `screenshots/QA.md` and the current captures when reviewing palette or terminal-output changes.
 
 ## Coding Style & Naming Conventions
 - Use 2-space indentation in TOML files and keep keys lowercase (example: `colors.primary`).
@@ -21,9 +21,9 @@
 - When adding new files, prefer descriptive, kebab-case names (example: `waffle-cat.yaml`).
 
 ## Testing Guidelines
-- There are no automated tests.
+- Run `./scripts/check-generated.sh` after palette, generator, editor, or integration changes.
 - Follow the visual QA checklist in `DEVPLAN.md` and capture screenshots if you change contrast, cursor, or accent roles.
-- If you introduce tests or validation scripts, name them with a clear prefix (example: `test_palette.sh`) and document how to run them.
+- Keep validation scripts focused by target area and document new checks in `README.md`.
 
 ## Commit & Pull Request Guidelines
 - There is no Git history yet, so no established commit convention exists.

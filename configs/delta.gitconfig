@@ -1,0 +1,16 @@
+# Generated from palette/waffle-cat-base24.yaml. Do not edit by hand.
+[delta "waffle-cat"]
+    dark = true
+    syntax-theme = "waffle-cat"
+    line-numbers = true
+    line-numbers-left-style = "#a58c82"
+    line-numbers-right-style = "#a58c82"
+    file-style = "#c87d2a" bold
+    file-decoration-style = "#6b5650" ul
+    hunk-header-style = "#c98c97"
+    hunk-header-decoration-style = "#6b5650" box
+    minus-style = "#cf7358" "#362d30"
+    minus-emph-style = "#fffaf0" "#6b5650"
+    plus-style = "#9fad68" "#362d30"
+    plus-emph-style = "#151013" "#b9c97f"
+    zero-style = syntax

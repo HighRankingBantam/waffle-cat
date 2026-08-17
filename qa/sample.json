@@ -1,0 +1,12 @@
+{
+  "name": "Waffle Cat",
+  "version": "2.0.0",
+  "variant": "dark",
+  "palette": {
+    "background": "#292025",
+    "foreground": "#fff4d8",
+    "accent": "#c87d2a"
+  },
+  "features": ["base24", "semantic-colors", "portable-editors"],
+  "validated": true
+}

@@ -1,0 +1,28 @@
+system: "base16"
+name: "Waffle Cat"
+slug: "waffle-cat"
+author: "OldJobobo"
+variant: "dark"
+
+# Deliberate reduction of the canonical Base24 palette. Use Base24 when
+# terminal bright colors or the extended darker background ramp are needed.
+palette:
+  # --- cocoa shadow / cream ramp ---
+  base00: "#292025" # Cocoa Shadow    - default background
+  base01: "#362D30" # Waffle Crumb    - lighter background
+  base02: "#6B5650" # Syrup Wash      - selection background
+  base03: "#A58C82" # Coffee Dust     - comments / muted text
+  base04: "#A58C82" # Coffee Foam     - dark foreground
+  base05: "#FFF4D8" # Vanilla Cream   - default foreground
+  base06: "#FFF4D8" # Warm Milk       - light foreground
+  base07: "#FFFAF0" # Whipped Cream   - brightest foreground
+
+  # --- toasted waffle accents ---
+  base08: "#CF7358" # Berry Syrup     - red / error
+  base09: "#C8964B" # Toasted Honey   - orange / warning
+  base0A: "#C8964B" # Honey Glaze     - yellow
+  base0B: "#9FAD68" # Pistachio Crumb - green
+  base0C: "#9EB8B2" # Cool Porcelain  - cyan
+  base0D: "#C87D2A" # Honey Amber     - blue
+  base0E: "#C98C97" # Strawberry Milk - purple
+  base0F: "#644B26" # Dark Syrup      - brown / special

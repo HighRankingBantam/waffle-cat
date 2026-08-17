@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated from palette/waffle-cat-base24.yaml. Do not edit by hand. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key><string>Waffle Cat</string>
+  <key>settings</key>
+  <array>
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>background</key><string>#292025</string>
+        <key>foreground</key><string>#fff4d8</string>
+        <key>caret</key><string>#fffaf0</string>
+        <key>selection</key><string>#6b5650</string>
+        <key>lineHighlight</key><string>#362d30</string>
+        <key>invisibles</key><string>#a58c82</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Comment</string>
+      <key>scope</key><string>comment, punctuation.definition.comment</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#a58c82</string>
+        <key>fontStyle</key><string>italic</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>String</string>
+      <key>scope</key><string>string</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#9fad68</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Number and constant</string>
+      <key>scope</key><string>constant</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c8964b</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Built-in constant</string>
+      <key>scope</key><string>constant.language</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#e4c56d</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Keyword</string>
+      <key>scope</key><string>keyword, storage</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c98c97</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Function</string>
+      <key>scope</key><string>entity.name.function, support.function</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c87d2a</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Type</string>
+      <key>scope</key><string>entity.name.type, entity.name.class, support.type</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c8964b</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Attribute</string>
+      <key>scope</key><string>entity.other.attribute-name</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#9eb8b2</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Variable</string>
+      <key>scope</key><string>variable</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#fff4d8</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Invalid</string>
+      <key>scope</key><string>invalid</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#fffaf0</string>
+        <key>background</key><string>#cf7358</string>
+        <key>fontStyle</key><string>bold</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup heading</string>
+      <key>scope</key><string>markup.heading</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c87d2a</string>
+        <key>fontStyle</key><string>bold</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup inserted</string>
+      <key>scope</key><string>markup.inserted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#9fad68</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup deleted</string>
+      <key>scope</key><string>markup.deleted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#cf7358</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup changed</string>
+      <key>scope</key><string>markup.changed</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c8964b</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup raw</string>
+      <key>scope</key><string>markup.raw</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#9fad68</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>

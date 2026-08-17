@@ -1,0 +1,12 @@
+diff --git a/palette/alpha.yaml b/palette/waffle-cat-base24.yaml
+index 1234567..89abcde 100644
+--- a/palette/alpha.yaml
++++ b/palette/waffle-cat-base24.yaml
+@@ -1,3 +1,4 @@
+-name: "Waffle Cat (alpha)"
+-background: "#292025"
+-accent: "#ffbe55"
++name: "Waffle Cat"
++system: "base24"
++background: "#292025"
++accent: "#c87d2a"
